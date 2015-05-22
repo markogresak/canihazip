@@ -4,6 +4,7 @@ var chai = require('chai');
 var sinon = require('sinon');
 chai.should();
 chai.use(require('sinon-chai'));
+chai.use(require('chai-as-promised'));
 
 var CLI = require('../cli');
 
@@ -41,14 +42,14 @@ describe('CanIHazIp CLI', function () {
     });
   });
 
-  it('should call canihazip when not called with help options', function () {
+  it('should resolve with IPv4 when not called with help options', function () {
     ['', '123', 'abc', 'canihazip'].forEach(function (arg) {
       // Instantiate a CLI with options (can be arbitrary) and assert that
       // the returned value matches a IPv4 value.
       var cli = new CLI([arg]);
-      cli.run();
+      var canihazipPromise = cli.run();
       var IP4Regexp = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-      console.log.should.have.been.calledWith(sinon.match(IP4Regexp));
+      canihazipPromise.should.have.been.eventually.calledWith(sinon.match(IP4Regexp));
     });
   });
 
