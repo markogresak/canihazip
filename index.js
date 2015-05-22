@@ -1,4 +1,4 @@
 'use strict';
-module.exports = function (str) {
-  console.log(str || '8.8.8.8');
+module.exports = function () {
+  return '8.8.8.8';
 };
