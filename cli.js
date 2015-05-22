@@ -42,7 +42,7 @@ CLI.prototype.run = function () {
   // There was no help options, get IP using canihazip and output it to stdout.
   else {
     var canihazip = require('./');
-    return canihazip(console.log);
+    return canihazip().then(console.log);
   }
 };
 
