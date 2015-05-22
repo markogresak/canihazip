@@ -31,6 +31,8 @@ CLI.helpMessage = [
 
 /**
  * Run CLI with given args.
+ *
+ * @returns {Promise} Promise from canihazip request.
  */
 CLI.prototype.run = function () {
   // Check if first argument matches any of help args, if it does, output help message.
@@ -40,7 +42,7 @@ CLI.prototype.run = function () {
   // There was no help options, get IP using canihazip and output it to stdout.
   else {
     var canihazip = require('./');
-    canihazip(console.log);
+    return canihazip(console.log);
   }
 };
 
