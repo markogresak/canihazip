@@ -9,13 +9,10 @@ var CLI = require('../cli');
 
 describe('CanIHazIp CLI', function () {
 
-  var helpMessage;
-
   beforeEach(function () {
     // Stub console log and info methods.
     sinon.stub(console, 'log');
     sinon.stub(console, 'info');
-    helpMessage = CLI.helpMessage;
   });
 
   afterEach(function () {
@@ -25,8 +22,8 @@ describe('CanIHazIp CLI', function () {
   });
 
   it('should have a static help message property', function () {
-    helpMessage.should.be.a('string');
-    helpMessage.should.not.be.empty;
+    CLI.helpMessage.should.be.a('string');
+    CLI.helpMessage.should.not.be.empty;
   });
 
   it('instance should have a run function', function () {
@@ -40,7 +37,7 @@ describe('CanIHazIp CLI', function () {
       // console.info was passed the `helpMessage`.
       var helpCLI = new CLI([helpArg]);
       helpCLI.run();
-      console.info.should.have.been.calledWith(helpMessage);
+      console.info.should.have.been.calledWith(CLI.helpMessage);
     });
   });
 
