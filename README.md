@@ -8,13 +8,13 @@
 ### To use it as a node module:
 
 ```sh
-$ npm install --save canihazip
+npm install --save canihazip
 ```
 
 #### Or to use it as CLI:
 
 ```sh
-$ npm install --global canihazip
+npm install --global canihazip
 ```
 
 ## Usage
@@ -30,9 +30,10 @@ var ip = canihazip();
 #### As CLI:
 
 ```sh
-$ canihazip
-8.8.8.8
+canihazip
 ```
+
+This will return IP of the current machine, for example: `8.8.8.8`.
 
 
 ## License
