@@ -8,34 +8,48 @@
 var protocol = require('http');
 
 /**
+ * Save reference to native Promise implementation or import promise module.
+ *
+ * @type {Promise}
+ */
+var Promise = Promise || require('promise');
+
+/**
  * CanIHazIp constructor function.
  *
  * @param {Function=} callback (optional) Function to be called with IP data after server responds.
+ *
+ * @returns {Promise} Promise which is resolved with IP data after server responds.
  */
 function CanIHazIp(callback) {
 
-  var httpCallback = function (response) {
-    var responseData = '';
-    // When data is received, append it to `responseData`.
-    response.on('data', function (chunk) {
-      responseData += chunk;
-    });
-    // When response ends, call `callback` if it's a function.
-    response.on('end', function () {
-      if (typeof callback === 'function') {
-        callback(responseData);
-      }
-    });
-  };
+  return new Promise(function (resolve) {
 
-  // Connect options for canihazip API, GET method is implicit.
-  var canihazipOptions = {
-    host: 'canihazip.com',
-    path: '/s'
-  };
+    var httpCallback = function (response) {
+      var responseData = '';
+      // When data is received, append it to `responseData`.
+      response.on('data', function (chunk) {
+        responseData += chunk;
+      });
+      // When response ends, resolve returned Promise and call `callback` if it's a function.
+      response.on('end', function () {
+        resolve(responseData);
+        if (typeof callback === 'function') {
+          callback(responseData);
+        }
+      });
+    };
 
-  // Make a request to canihazip and end it immediately.
-  protocol.request(canihazipOptions, httpCallback).end();
+    // Connect options for canihazip API, GET method is implicit.
+    var canihazipOptions = {
+      host: 'canihazip.com',
+      path: '/s'
+    };
+
+    // Make a request to canihazip and end it immediately.
+    protocol.request(canihazipOptions, httpCallback)
+      .end();
+  });
 }
 
 module.exports = CanIHazIp;

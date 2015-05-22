@@ -17,7 +17,9 @@
     "canihazip",
     "ip"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "promise": "^7.0.1"
+  },
   "devDependencies": {
     "chai": "^2.3.0",
     "grunt-cli": "^0.1.13",
