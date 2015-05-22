@@ -5,12 +5,21 @@
 
 ## Install
 
+### To use it as a node module:
+
 ```sh
 $ npm install --save canihazip
 ```
 
+#### Or to use it as CLI:
+
+```sh
+$ npm install --global canihazip
+```
 
 ## Usage
+
+### As a node module:
 
 ```js
 var canihazip = require('canihazip');
@@ -18,8 +27,9 @@ var canihazip = require('canihazip');
 var ip = canihazip();
 ```
 
+#### As CLI:
+
 ```sh
-$ npm install --global canihazip
 $ canihazip
 8.8.8.8
 ```
