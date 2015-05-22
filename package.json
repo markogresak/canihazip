@@ -1,6 +1,6 @@
 {
   "name": "canihazip",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Get public IP using canihazip.com.",
   "author": {
     "name": "Marko Grešak",
