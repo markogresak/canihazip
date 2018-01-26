@@ -5,7 +5,7 @@
  *
  * TODO: Implement HTTPS. - has to be implemented on canihazip.com first.
  */
-var protocol = require('http');
+var protocol = require('https');
 
 /**
  * Save reference to native Promise implementation or import promise module.
