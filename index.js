@@ -1,9 +1,7 @@
 'use strict';
 
 /**
- * Import HTTP interface module.
- *
- * TODO: Implement HTTPS. - has to be implemented on canihazip.com first.
+ * Import HTTPS interface module.
  */
 var protocol = require('https');
 
