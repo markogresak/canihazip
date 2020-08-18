@@ -39,13 +39,12 @@ function CanIHazIp(callback) {
     };
 
     // Connect options for canihazip API, GET method is implicit.
-    var canihazipOptions = {
-      host: 'canihazip.com',
-      path: '/s'
+    var options = {
+      host: 'api.ipify.org',
     };
 
     // Make a request to canihazip and end it immediately.
-    protocol.request(canihazipOptions, httpCallback)
+    protocol.request(options, httpCallback)
       .end();
   });
 }
