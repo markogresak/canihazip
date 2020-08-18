@@ -33,8 +33,7 @@ var ip = canihazip();
 canihazip
 ```
 
-This will return IP of the current machine, for example: `8.8.8.8`.
-
+This will return IP of the current machine, for example: `1.2.3.4`.
 
 ## License
 
